@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+    <style>
+        #button{
+            border: 2px solid;
+            height: 700px;
+            width:700px;
+            margin: auto;
+            display: flex;
+            padding: 5px;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .box{
+            border: 1px solid;
+            height: 100px;
+            width: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="button">
+        <span class="box" id="blue" style="background-color: blue;"></span>
+        <span class="box" id="white" style="background-color: white;"></span>
+        <span class="box" id="purple" style="background-color: purple;"></span>
+        <span class="box" id="yellow" style="background-color: yellow;"></span>
+        <span class="box" id="green" style="background-color: green;"></span>
+    </div>
+</body>
+</html>
+<script>
+    const box=document.querySelectorAll('.box')
+    const body = document.querySelector('#button')
+
+    // console.log(box)
+
+    box.forEach((item)=>{
+        // console.log(item)
+
+        const color = item.id
+        // console.log(color);
+        
+        item.addEventListener("click",(e)=>{
+            body.style.backgroundColor=color
+        })
+    })
+</script>
