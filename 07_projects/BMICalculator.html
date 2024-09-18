@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI calculator</title>
+    <style>
+      form {
+        width: 80%;
+        margin: 5% auto;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      #result{
+        margin: 5% auto;
+        width: 60%;
+        padding-left: 15%;
+      }
+      ul{
+        margin: 5% auto;
+        border: 2px solid;
+        width: 60%;
+        padding-left: 15%;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="height">Height (m)</label>
+      <input id="height" type="text" />
+
+      <label for="weight">Weight (kg)</label>
+      <input id="weight" type="text" />
+
+      <input type="submit" value="Calculate" />
+    </form>
+
+    <div id="result"></div>
+
+    <ul>
+      <li accessKey="Underweight">Underweight: BMI less than <span>18.5 kg/m^2</span> </li>
+      <li accessKey="Healthy">Healthy weight: BMI between <span>18.5 and 24.9 kg/m^2</span></li>
+      <li accessKey="Overweight">Overweight: BMI between <span>25 and 29.9 kg/m^2</span></li>
+      <li accessKey="Obesity">Obesity: BMI between <span>30 and 39.9 kg/m^2</span></li>
+      <li accessKey="Severe-obesity">Severe obesity: BMI <span>40 kg/m^2</span> or higher</li>
+    </ul>
+
+
+  </body>
+  <script>
+    const form = document.querySelector('form')
+    const lists = document.querySelectorAll('li')
+
+    console.log(lists)
+    
+    
+
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        const height=document.getElementById("height").value
+        const weight=document.getElementById("weight").value
+        const result=document.getElementById("result")
+
+        console.log(`Height is ${height}`)
+        console.log(`Weight is ${weight}`)
+
+        if(height==='' || height<0 || isNaN(height)){
+            result.textContent='Enter the correct height'
+        }
+        else if(weight==='' || weight<0 || isNaN(weight)){
+            result.textContent='Enter the correct weight'
+        }
+        else if(isNaN(height) || isNaN(weight)){
+            result.textContent='Enter the Height and weight'
+        }
+        else{
+            const bmi = (weight/(height*height)).toFixed(2)
+            console.log(`BMI is ${bmi}`)
+            result.textContent=`BMI is ${bmi} kg/m^2`
+            
+            lists.forEach((item)=>{
+                const accessKey=item.accessKey
+                if(bmi<18.5 && accessKey==='Underweight'){
+                    item.style.backgroundColor='Yellow'
+                }
+                if(bmi>=18.5 && bmi<=24.5 && accessKey==='Healthy'){
+                    item.style.backgroundColor='Yellow'
+                }
+                if(bmi>=25 && bmi<=29.9 && accessKey==='Overweight'){
+                    item.style.backgroundColor='Yellow'
+                }
+                if(bmi>=30 && bmi<=39.9 && accessKey==='Obesity'){
+                    item.style.backgroundColor='Yellow'
+                }
+                if(bmi>=40 && accessKey==='Severe-obesity'){
+                    item.style.backgroundColor='Yellow'
+                }
+            })
+        }
+        
+
+    })
+  </script>
+</html>
