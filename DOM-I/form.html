@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="name" type="text" value="" />
+    <button onClick="catchValue()">Submit</button>
+    <!-- Show output here -->
+    <h1 id="output"></h1>
+
+    <select id="gender">
+        <option value="">Select gender</option>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+      </select>
+      <button onClick="getGender()">Submit</button>
+  </body>
+</html>
+
+<script>
+    var elem = document.getElementById("output")
+  function catchValue() {
+    var studentName = document.getElementById("name").value;
+    elem.innerText = studentName;
+  }
+
+  function getGender() {
+    var gen = document.getElementById("gender").value;
+    console.log(gen);
+  }
+
+  // Appling styles on element
+  elem.style.color = "blue";
+    elem.style.fontSize = "18px";
+    elem.style.fontWeight = "bold";
+    
+</script>
