@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Image</title>
+  </head>
+  <body>
+    <img
+      height="200px"
+      src="https://cdn.theatlantic.com/media/img/photo/2019/03/national-puppy-day-photos/p01_556211362-1/original.jpg"
+      alt=""
+    />
+    <div>
+      <p>Likes : <span id="likes"></span></p>
+      <p>Dislikes : <span id="dislikes"></span></p>
+    </div>
+    <div>
+      <button id="likeBtn">Like👍🏻</button>
+      <button id="dislikeBtn">Dislike👎🏻</button>
+    </div>
+  </body>
+</html>
+<script>
+    document.getElementById("likeBtn").addEventListener("click", likeFun);
+  var likeCount = localStorage.getItem('likeCount')||0;
+  document.querySelector("#likes").innerText = likeCount; // initial count
+
+  var dislikeCount = localStorage.getItem('dislikeCount')||0;
+  document.querySelector("#dislikes").innerText = dislikeCount; // initial count
+
+  function likeFun() {
+    likeCount++;
+    localStorage.setItem('likeCount',likeCount)
+    document.querySelector("#likes").innerText = likeCount;
+  }
+
+  document.getElementById("dislikeBtn").addEventListener("click", dislikeFun);
+
+  function dislikeFun() {
+    dislikeCount++;
+    localStorage.setItem('dislikeCount',dislikeCount)
+    document.querySelector("#dislikes").innerText = dislikeCount;
+  }
+   
+  var getlikeCount = localStorage.getItem('likeCount')
+  console.log(`Total likeCounts are: ${getlikeCount}`)
+
+  var getDislikeCount = localStorage.getItem('dislikeCount')
+  console.log(`Total dislike counts are: ${dislikeCount}`)
+</script>

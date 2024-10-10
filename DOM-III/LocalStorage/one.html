@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  localStorage.setItem("studentName1", "Cherry");
+  localStorage.setItem("studentName2", "Superman");
+  localStorage.setItem("studentName2", "Spiderman");
+  localStorage.setItem("studentId", 1);
+  localStorage.setItem("studentPresent", true);
+
+  var name = localStorage.getItem("studentName1");
+  console.log(name);
+
+  let nums = [1, 2, 3, 4];
+  localStorage.setItem("arrOfNums", nums);
+
+  var getArr = localStorage.getItem("arrOfNums");
+  console.log(typeof getArr); // will return string
+
+  var stringArr = JSON.stringify(nums);
+  console.log(stringArr);
+  localStorage.setItem("arrOfNums", stringArr);
+
+  var arr = localStorage.getItem("arrOfNums");
+  console.log(typeof arr);
+  //   arr.push(5)
+
+  arr = JSON.parse(arr);
+  console.log(arr);
+  console.log(typeof arr);
+  arr.push(5);
+  console.log(arr);
+
+  var studentObj = {
+    name : 'souvik',
+    age:23,
+    adress:{
+        state:'west Bengal',
+        city:'Bankura'
+    },
+    sayHi : function (){
+        console.log(`${this.name} is saying Hi !`)
+    }
+  }
+
+  var studentInfo = JSON.stringify(studentObj)
+  localStorage.setItem('studentInfo',studentInfo)
+
+  var getStudentDetails = localStorage.getItem('studentInfo')
+  console.log(getStudentDetails)
+  console.log(typeof getStudentDetails)
+
+  getStudentDetails = JSON.parse(getStudentDetails)
+  console.log(getStudentDetails)
+  console.log(typeof getStudentDetails)
+</script>
