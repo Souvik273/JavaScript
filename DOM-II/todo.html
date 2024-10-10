@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TODO APP</h1>
+        <div id="child2">
+        <form class="todo-form">
+            <label for="task-name">Task Name</label>
+            <input type="text" id="task-name" placeholder="Enter task here" required>
+
+            <label for="priority">Priority</label>
+            <select id="priority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+
+            <input type="submit" id="submit-btn"/>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Priority</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    </div>
+</body>
+</html>
+<script>
+    
+    document.querySelector('form').addEventListener('submit',Todo)
+
+    function Todo(e){
+        e.preventDefault()
+    var taskName = document.querySelector('#task-name').value
+    var priority = document.querySelector('#priority').value
+
+    var tr = document.createElement('tr')
+
+    var td1 = document.createElement('td')
+    td1.textContent=taskName
+
+    var td2 = document.createElement('td')
+    td2.textContent = priority
+
+    if(priority==='high'){
+        td2.style.backgroundColor = 'red';
+    }else if(priority ==='medium'){
+        td2.style.backgroundcolor = 'Yellow';
+    }else
+        td2.style.backgroundColor='green'
+
+    var td3 = document.createElement('td')
+    td3.textContent = 'Delete'
+    td3.addEventListener('click',Delete)
+    td3.className='delete-btn'
+
+    document.querySelector('tbody').append(tr)
+    tr.append(td1,td2,td3)
+    }
+
+
+    function Delete(){
+        event.target.parentNode.remove()
+    }
+    
+
+</script>
