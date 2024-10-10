@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input id="name" type="text" placeholder="enter name" />
+      <input id="mail" type="email" placeholder="Enter email address" />
+      <input type="submit" />
+    </form>
+    <h1 id="nameDisplay">display name here</h1>
+    <h2 id="emailDisplay">display email here</h2>
+  </body>
+</html>
+
+<script>
+  document.querySelector("form").addEventListener("submit", getData);
+  function getData() {
+    event.preventDefault();
+    var username = document.getElementById("name").value;
+    var email = document.getElementById("mail").value;
+    document.getElementById("nameDisplay").innerText = username;
+    document.getElementById("emailDisplay").innerText = email;
+  }
+</script>
