@@ -20,6 +20,19 @@ var person1 = {
   
   printDetails.call(person1,28,"New york"); // John is 28 years old and lives in New york
   printDetails.call(person2,32,"Bengaluru");
+
+  var person = {
+    name : 'Yash',
+    age : 28 
+}
+var obj = {
+    name : 'roshan',
+    age : 27 ,
+    print : function (){
+        console.log(`Name : ${this.name} and Age : ${this.age}`)
+    }
+}
+obj.print.call(person)
   
 
   // -----------------------------Apply ---------------------
